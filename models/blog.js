@@ -22,7 +22,11 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    likes: Number
+    likes: Number,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 // Transforms _id into a string rather than an object and deletes __v

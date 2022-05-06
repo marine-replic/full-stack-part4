@@ -1,9 +1,24 @@
 POST http://localhost:3003/api/blogs HTTP/1.1
 content-type: application/json
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvZ2ludGVzdHVzZXIiLCJpZCI6IjYyNzU2ZTRkOTA1YzRkZjcyYzE0YWRlYyIsImlhdCI6MTY1MTg2MzQ2OH0.J750-yTApJbqvZMMCHF9X7cz8RHdWUQ8C6QJ_fKI7D8
 
 {
-    "title": "Test Blog Title",
-    "author": "Test Author",
+    "title": "Testing addition of user extraction middleware",
+    "author": "Test Authorized Author",
     "url": "Test URL",
-    "likes": 4
+    "likes": 45,
+    "userId": "6270573a1cb24a100710767e"
+}
+
+###
+POST http://localhost:3003/api/blogs HTTP/1.1
+content-type: application/json
+authorization: bearer invalidtoken
+
+{
+    "title": "Adding Test Blog with incorrect Authorization Token in Header",
+    "author": "Test Authorized Author",
+    "url": "Test URL",
+    "likes": 259,
+    "userId": "6270573a1cb24a100710767e"
 }
